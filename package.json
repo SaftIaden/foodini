@@ -9,10 +9,14 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.15.5",
-    "axios": "^1.2.2",
+    "axios": "^1.3.3",
+    "d3": "^7.8.2",
+    "openfoodfacts-nodejs": "^0.1.0",
     "pinia": "^2.0.23",
     "quasar": "^2.10.0",
     "vue": "^3.2.41",
+    "vue-barcode-reader": "^1.0.3",
+    "vue-ellipse-progress": "^2.1.1",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
@@ -21,6 +25,7 @@
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "sass": "^1.32.12",
-    "vite": "^3.1.8"
+    "vite": "^3.1.8",
+    "vite-plugin-pwa": "^0.14.4"
   }
 }
