@@ -1,29 +1,29 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import { getFoods } from '../indexedDB';
 
 const query = 'https://world.openfoodfacts.org/api/v0/product/'
 
 export const useProductStore = defineStore('productStore', {
   state: () => ({
-    products: [],
+    foods: [],
     product: {},
     barcode: '',
   }),
   getters: {
     getProduct: (state) => state.product,
+    getFooods: (state) => state.foods,
   },
   actions: {
-    addProduct(product) {
-      const productData = {
-        barcode: this.product.barcode,
-        name: productD 
-      }
-      this.products.push(product);
-    },
     async fetchProduct(){
-      const response = await axios.get(query + this.barcode + '.json');
+      const response = await axios.get(`${query}${this.barcode}.json`);
       console.log(response);
       this.product = response.data;
+    },
+    //fetch products from indexedDB
+    async fetchTodaysFoods(){
+      const foods = await getFoods();
+      this.foods = foods;
     }
   },
 });

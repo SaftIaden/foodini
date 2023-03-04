@@ -47,7 +47,6 @@ const onLoaded = () => {
 </script>
 <template>
   <q-btn @click="runScanner = !runScanner">SCAN</q-btn>
-  <q-btn @click="direct">goto</q-btn>
   <StreamBarcodeReader v-if="runScanner" @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
 </template>
 <style></style>

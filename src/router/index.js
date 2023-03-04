@@ -20,10 +20,20 @@ const router = createRouter({
     },
     {
       path: '/add/:barcode',
-      name: 'add',
-      component: () => import('../views/AddProduct.vue'),
+      name: 'addScanned',
+      component: () => import('../views/AddScanned.vue'),
       props: true
-    }
+    },
+    {
+      path: '/add',
+      name: 'add',
+      component: () => import('../views/AddView.vue')
+    },
+    {
+      path: '/add/custom',
+      name: 'addCustom',
+      component: () => import('../views/AddCustom.vue')
+    },
   ]
 })
 
