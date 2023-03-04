@@ -37,15 +37,12 @@ const onDecode = async (result) => {
 
   await store.fetchProduct();
 
-
-
   router.push(`add/${result}`);
 /*window.navigator.vibrate(1000); */
 };
 const onLoaded = () => {
   console.log('loaded');
 };
-
 
 </script>
 <template>

@@ -1,4 +1,7 @@
-<script setup>
+<template>
+
+</template>
+<script>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
@@ -8,14 +11,18 @@ const food = ref()
 
 const store = useProductStore();
 
-const values = [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 ]
+const props = defineProps({
+  barcode: {
+    type: String,
+    required: true,
+  },
+});
+
+onMounted(async () => {
+  console.log(store);
+  console.log(store.product);
+});
 
 </script>
-<template>
-  <div>
-    {{ store.product }}
-    <!--x <Picker :options="values" v-model="currentYear" /> -->
-  </div>
-</template>
 <style>
 </style>

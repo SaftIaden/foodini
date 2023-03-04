@@ -17,7 +17,8 @@
     "vue": "^3.2.41",
     "vue-barcode-reader": "^1.0.3",
     "vue-ellipse-progress": "^2.1.1",
-    "vue-router": "^4.1.5"
+    "vue-router": "^4.1.5",
+    "vue-wheel-picker": "^0.3.2"
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.2.3",
