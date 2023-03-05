@@ -14,6 +14,7 @@
     "idb": "^7.1.1",
     "openfoodfacts-nodejs": "^0.1.0",
     "pinia": "^2.0.23",
+    "pinia-plugin-persistedstate": "^3.1.0",
     "quasar": "^2.10.0",
     "vue": "^3.2.41",
     "vue-barcode-reader": "^1.0.3",

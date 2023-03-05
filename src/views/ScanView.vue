@@ -5,6 +5,12 @@ import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
 import { useProductStore } from '../stores/productStore';
 
+// import QrcodeScanner from  '../components/QRScanner.vue';
+
+// const onScanResult = (decodedText, decodedResult) => {
+//   console.log('Scan result:', decodedText, decodedResult);
+// };
+
 const runScanner = ref(false);
 
 const store = useProductStore();
@@ -19,26 +25,12 @@ const props = defineProps({
 });
 
 
-/* const worldOFF = new off();
-const atOFF = worldOFF.country("at"); */
-const query = 'https://world.openfoodfacts.org/api/v0/product/'
-
-async function findFood(barcode) {
-  const response = await axios.get(query + barcode + '.json');
-  console.log(response);
-  return response.data;
-};
-
-
 const onDecode = async (result) => {
   runScanner.value = false;
   console.log(result);
-  store.$state.barcode = result;
-
-  await store.fetchProduct();
 
   router.push(`add/${result}`);
-/*window.navigator.vibrate(1000); */
+  /*window.navigator.vibrate(1000); */
 };
 const onLoaded = () => {
   console.log('loaded');
@@ -46,7 +38,28 @@ const onLoaded = () => {
 
 </script>
 <template>
-  <q-btn @click="runScanner = !runScanner">SCAN</q-btn>
-  <StreamBarcodeReader v-if="runScanner" @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+  <q-btn class="btn" @click="runScanner = !runScanner">SCAN</q-btn>
+  <div>
+    <div class="box"></div>
+    <StreamBarcodeReader v-if="runScanner" @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+    <!-- <QrcodeScanner v-if="runScanner" :qrbox="250" :fps="10" @result="onScanResult"></QrcodeScanner> -->
+  </div>
 </template>
-<style></style>
+<style>
+.btn {
+  position: absolute;
+  bottom: calc(33.33% - 30px);
+  /* Position button at bottom third of screen, with some padding */
+  left: 50%;
+  /* Position button in the horizontal center of the container */
+  transform: translateX(-50%);
+  /* Move button back to the left by half its own width */
+  width: 90px;
+  /* Set button width */
+  height: 50px;
+  /* Set button height */
+}
+.box{
+  height: 200px;
+}
+</style>

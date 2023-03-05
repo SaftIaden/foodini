@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, toRaw } from 'vue';
+import { ref } from 'vue';
 import { addFood } from '@/indexedDB';
 import router from '../router';
 
@@ -52,6 +52,7 @@ const carbs = ref(0);
 const kcal = ref(0);
 const meal = ref('breakfast');
 
+
 const addItem = async () => {
   const food = {
     name: name.value,
@@ -60,7 +61,8 @@ const addItem = async () => {
     protein: protein.value,
     carbs: carbs.value,
     kcal: kcal.value,
-    meal: meal.value
+    meal: meal.value,
+    timestamp: Date.now(),
   };
   console.log(food);
   await addFood(food);

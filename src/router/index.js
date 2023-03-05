@@ -34,6 +34,11 @@ const router = createRouter({
       name: 'addCustom',
       component: () => import('../views/AddCustom.vue')
     },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('../views/UserSettings.vue')
+    },
   ]
 })
 

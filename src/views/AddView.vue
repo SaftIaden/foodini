@@ -11,12 +11,9 @@
   </q-page-container>
 </template>
 <script>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import { useRoute, useRouter } from 'vue-router';
+import { onMounted } from 'vue';
 import { useProductStore } from '../stores/productStore';
 
-const food = ref();
 
 const store = useProductStore();
 
