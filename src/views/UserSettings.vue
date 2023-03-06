@@ -6,7 +6,7 @@
         <div class="q-ml-lg">
           <div class="text-h5 text-bold q-mt-md q-mb-md">Settings</div>
           <q-form>
-            <input label="kcal" hint="Your daily calorie goal" v-model="goal"/>
+            <q-input label="kcal" hint="Your daily calorie goal" v-model="goal"/>
           </q-form>
           <q-btn color="secondary" class="q-mt-md q-mb-md" @click="setGoal()" type="submit">Save</q-btn>
         </div>
@@ -30,7 +30,7 @@ function setGoal() {
 
 onMounted(async () => {
   const storedGoal = store.getGoal;
-  goal.value = storedGoal;
+  goal.value = Number(storedGoal);
 });
 
 </script>

@@ -15,8 +15,9 @@ const percentage = ref();
 let tdFood;
 
 const todaysFood = ref()
+
 const breakfast = ref();
-const lunch = ref(null);
+const lunch = ref();
 const dinner = ref();
 const snacks = ref();
 
@@ -43,7 +44,8 @@ onMounted(async () => {
     const dn = tdFood.filter((item) => item.meal === 'Dinner');
     const sn = tdFood.filter((item) => item.meal === 'Snack');
 
-    console.log(breakfast)
+    console.log(bf)
+    console.log(lc)
 
     breakfast.value = bf;
     lunch.value = lc;
@@ -57,9 +59,7 @@ onMounted(async () => {
 function calculateCalories(per100g, weight) {
   const unrounded = (Number(per100g) / 100) * Number(weight);
   return Math.round(unrounded);
-}
-
-
+} 
 
 </script>
 
@@ -70,11 +70,11 @@ function calculateCalories(per100g, weight) {
       <span class="text-h5 text-center">Your Tracked Food <br />Today</span>
     </div>
     <div class="justify-center text-center q-mt-xl">
-      <vep :progress="percentage" :angle="0" color="#e94f37ff" emptyColor="#4c5c68ff" :size="300" :thickness="3" emptyThickness="3%" :legend="currentValue" fontColor="black" :half="true" fontSize="3rem"> </vep>
+      <vep :progress="percentage" :angle="0" color="#e94f37ff" emptyColor="#ffffff" :size="300" :thickness="3" emptyThickness="3%" :legend="currentValue" fontColor="black" :half="true" fontSize="3rem"> </vep>
     </div>
     <q-list class="log">
       <span class="text-caption text-bold q-ml-sm">Breakfast</span><br />
-      <span v-if="toRaw(!breakfast)" class="q-ml-sm text-grey">No entries yet</span>
+      <span v-if="breakfast && breakfast.length === 0" class="q-ml-sm text-grey">No entries yet</span>
           <q-item class="product-item" v-for="(p, i) in breakfast" :key="i">
             <q-item-section>
               <q-item-label
@@ -87,7 +87,7 @@ function calculateCalories(per100g, weight) {
     </q-list>
     <q-list class="log">
       <span  class="text-caption text-bold q-ml-sm">Lunch</span><br />
-      <span v-if="!lunch?.value" class="q-ml-sm text-grey">No entries yet</span>
+      <span v-if="lunch && lunch.length === 0" class="q-ml-sm text-grey">No entries yet</span>
           <q-item class="product-item" v-for="(l, i) in lunch" :key="i">
             <q-item-section>
               <q-item-label
@@ -100,7 +100,7 @@ function calculateCalories(per100g, weight) {
     </q-list>
     <q-list class="log">
       <span class="text-caption text-bold q-ml-sm">Dinner</span><br />
-      <span v-if="!dinner?.value" class="q-ml-sm text-grey">No entries yet</span>
+      <span v-if="dinner && dinner.length === 0" class="q-ml-sm text-grey">No entries yet</span>
       <q-item class="product-item" v-for="(d, i) in dinner" :key="i">
             <q-item-section>
               <q-item-label
@@ -113,7 +113,7 @@ function calculateCalories(per100g, weight) {
     </q-list>
     <q-list class="log">
       <span class="text-caption text-bold q-ml-sm">Snacks</span><br />
-      <span v-if="!toRaw(snacks)" class="q-ml-sm text-grey">No entries yet</span>
+      <span v-if="snacks && snacks.length === 0" class="q-ml-sm text-grey">No entries yet</span>
           <q-item class="product-item" v-for="(s, i) in snacks" :key="i">
             <q-item-section>
               <q-item-label

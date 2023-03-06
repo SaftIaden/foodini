@@ -1,10 +1,8 @@
 import { defineStore, createPinia  } from "pinia";
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
 
 export const useSettingsStore = defineStore("settingsStore", {
+	persist: true,
 	state: () => ({
 		goal: 2000,
 	}),
@@ -16,5 +14,4 @@ export const useSettingsStore = defineStore("settingsStore", {
 			this.goal = goal;
 		},
 	},
-  persist: true,
 });
