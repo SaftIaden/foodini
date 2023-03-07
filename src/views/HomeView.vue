@@ -82,6 +82,7 @@ function calculateCalories(per100g, weight) {
                 ><span class="text-caption">{{ p.portionSize }} g</span></q-item-label
               >
               <q-item-label caption>{{ calculateCalories(p.kcal, p.portionSize) }} kcal</q-item-label>
+              <q-btn></q-btn>
             </q-item-section>
           </q-item>
     </q-list>
