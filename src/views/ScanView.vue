@@ -39,7 +39,9 @@ const onLoaded = () => {
 	<q-btn class="btn" @click="runScanner = !runScanner">SCAN</q-btn>
 	<div>
 		<div class="box"></div>
-		<StreamBarcodeReader v-if="runScanner" @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+		<div class="barcode-reader-wrapper">
+			<StreamBarcodeReader v-if="runScanner" @decode="onDecode" @loaded="onLoaded"></StreamBarcodeReader>
+		</div>
 		<!-- <QrcodeScanner v-if="runScanner" :qrbox="250" :fps="10" @result="onScanResult"></QrcodeScanner> -->
 	</div>
 </template>
@@ -56,6 +58,11 @@ const onLoaded = () => {
 	/* Set button width */
 	height: 50px;
 	/* Set button height */
+}
+.barcode-reader-wrapper {
+	display: flex;
+	justify-content: center;
+	transform: scaleX(-1);
 }
 .box {
 	height: 200px;
