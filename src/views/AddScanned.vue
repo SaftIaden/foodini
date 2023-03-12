@@ -19,7 +19,7 @@
             <div class="info">
               <div class=""><span class="text-bold">Serving Size: </span>{{ food?.serving_size }}</div>
               <q-input label="Portion (grams)" type="number" v-model="portion"></q-input>
-              <q-select id="meal" label="Meal" :options="['Breakfast', 'Lunch', 'Dinner', 'Snack']"
+              <q-select id="meal" label="Meal" :options="['breakfast', 'lunch', 'dinner', 'snack']"
               v-model="meal">
             </q-select>
             </div>

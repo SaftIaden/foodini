@@ -7,6 +7,7 @@ import '@quasar/extras/material-icons/material-icons.css';
 import quasarIconSet from 'quasar/icon-set/material-icons';
 import VueEllipseProgress from 'vue-ellipse-progress';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import Vue3TouchEvents from "vue3-touch-events";
 
 import 'quasar/src/css/index.sass';
 
@@ -26,4 +27,5 @@ app.use(Quasar, {
   iconSet: quasarIconSet,
 });
 app.use(VueEllipseProgress, "vep");
+app.use(Vue3TouchEvents);
 app.mount('#app');

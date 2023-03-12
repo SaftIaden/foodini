@@ -13,6 +13,6 @@ export const useProductStore = defineStore('productStore', {
     async fetchTodaysFoods(){
       const foods = await getFoods();
       this.foods = foods;
-    }
+    },
   },
 });

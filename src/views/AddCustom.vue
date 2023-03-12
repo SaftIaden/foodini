@@ -28,11 +28,11 @@
               hint="Amount of Kilocalories per 100g" v-model="kcal" />
           </div>
           <div>
-            <q-select class="form-item" id="meal" label="Meal" :options="['Breakfast', 'Lunch', 'Dinner', 'Snack']"
+            <q-select class="form-item" id="meal" label="Meal" :options="['breakfast', 'bunch', 'dinner', 'snack']"
               v-model="meal">
             </q-select>
           </div>
-          <q-btn class="q-mb-xl q-mr-xl" @click="addItem()" type="submit">Add Food</q-btn>
+          <q-btn class="q-mb-xl q-mr-xl" @click="addItem">Add Food</q-btn>
         </q-form>
       </div>
     </q-page>
@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, toRaw } from 'vue';
 import { addFood } from '@/indexedDB';
 import router from '../router';
 
@@ -55,12 +55,12 @@ const meal = ref('breakfast');
 
 const addItem = async () => {
   const food = {
-    name: name.value,
-    portionSize: portionSize.value,
-    fat: fat.value,
-    protein: protein.value,
-    carbs: carbs.value,
-    kcal: kcal.value,
+    name: toRaw(name.value),
+    portionSize: toRaw(Number(portionSize.value)),
+    fat: toRaw(Number(fat.value)),
+    protein: toRaw(Number(protein.value)),
+    carbs: toRaw(Number(carbs.value)),
+    kcal: toRaw(Number(kcal.value)),
     meal: meal.value,
     timestamp: Date.now(),
   };
