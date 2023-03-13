@@ -62,7 +62,6 @@ const onLoaded = () => {
 .barcode-reader-wrapper {
 	display: flex;
 	justify-content: center;
-	transform: scaleX(-1);
 }
 .box {
 	height: 200px;
