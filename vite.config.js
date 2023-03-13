@@ -15,7 +15,7 @@ export default defineConfig({
 		}),
 		VitePWA({
 			registerType: "autoUpdate",
-			manifest,
+			manifest: manifest,
 			workbox: {
 				globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
 				runtimeCaching: [
