@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import vue from '@vitejs/plugin-vue';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
+import manifest from './manifest';
 
 export default defineConfig({
   server: {
@@ -13,7 +14,7 @@ export default defineConfig({
     vue({
       template: { transformAssetUrls },
     }),
-    VitePWA(),
+    VitePWA({ registerType: 'autoUpdate', manifest }),
     quasar({
       sassVariables: 'src/quasar-variables.sass',
     }),
