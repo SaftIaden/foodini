@@ -1,9 +1,7 @@
 <script setup>
 import { StreamBarcodeReader } from 'vue-barcode-reader';
 import { ref } from 'vue';
-import axios from 'axios';
-import { useRoute, useRouter } from 'vue-router';
-import { useProductStore } from '../stores/productStore';
+import { useRouter } from 'vue-router';
 
 // import QrcodeScanner from  '../components/QRScanner.vue';
 
@@ -12,8 +10,6 @@ import { useProductStore } from '../stores/productStore';
 // };
 
 const runScanner = ref(false);
-
-const store = useProductStore();
 
 const router = useRouter();
 

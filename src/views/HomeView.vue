@@ -149,6 +149,17 @@ function showFoodModal(food) {
   foodModal.value = true;
 }
 
+function closeModal() {
+  updateFood();
+  foodModal.value = false;
+}
+
+function speakCurrentValue () {
+  const msg = new SpeechSynthesisUtterance();
+  console.log('speaking');
+  msg.text = currentValue.value;
+  speechSynthesis.speak(msg);
+}
 
 </script>
 
@@ -161,7 +172,7 @@ function showFoodModal(food) {
       {{ templateDate }}
     </div>
     <div v-touch:swipe.right="swipeRight" v-touch:swipe.left="swipeLeft">
-      <div class="justify-center text-center q-mt-md" style="">
+      <div class="justify-center text-center q-mt-md" style="" @click="speakCurrentValue">
         <vep :progress="percentage" :angle="0" color="#e94f37ff" emptyColor="#ffffff" :size="300" :thickness="3"
           emptyThickness="3%" :legend="currentValue" fontColor="black" :half="true" fontSize="3rem"> </vep>
       </div>
@@ -211,7 +222,7 @@ function showFoodModal(food) {
         </q-item>
       </q-list>
     </div>
-    <FoodModal :food="selectedFood" v-model="foodModal" />
+    <FoodModal :food="selectedFood" v-model="foodModal" @closeDialog="closeModal"/>
     <q-page-sticky position="bottom" class="q-mb-lg">
       <q-btn to="/add" round color="secondary"><img src="/images/plus.svg" /></q-btn>
     </q-page-sticky>

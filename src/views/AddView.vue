@@ -1,6 +1,13 @@
 <template>
   <q-page-container>
     <q-page class="q-pa-md">
+      <div class="row justify-center q-mt-xl">
+        <span class="text-h5 text-center">Add a Food Item to your Log</span>
+      </div>
+      <div style="height:70px"></div>
+      <div class="row justify-center q-mt-xl">
+        <span class="text-h6 text-weight-regular text-center" style="width:80%;">You can add a custom Item using your own values or scan the barcode of a product!</span>
+      </div>
       <q-page-sticky position="bottom-left" class="q-mb-lg q-ml-lg">
         <q-btn to="/add/custom" round color="secondary"><img src="/images/sliders.svg" /></q-btn>
       </q-page-sticky>
