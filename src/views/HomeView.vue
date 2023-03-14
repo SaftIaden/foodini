@@ -206,7 +206,7 @@ function speakCurrentValue () {
             <q-item-label><span class="text-subtitle1 q-mr-sm">{{ d.name }}</span><span class="text-caption">{{
               d.portion
             }} g</span></q-item-label>
-            <q-item-label caption> {{ calculateCalories(d.calories, d.portion) }} kcal</q-item-label>
+            <q-item-label caption> {{ calculateCalories(d.kcal, d.portionSize) }} kcal</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
