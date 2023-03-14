@@ -1,7 +1,10 @@
 <template>
   <q-page-container>
     <q-page class="q-pa-md">
-      <div>
+      <q-page-sticky position="top-left" class="q-mt-lg q-ml-lg q-mb-xl">
+        <q-btn to="/" round color="secondary"><img style="margin-left: -4px;" src="/images/chevron-left.svg" /></q-btn>
+      </q-page-sticky>
+      <div style="margin-top: 60px">
         <h6 class="q-mb-xs q-ml-lg">Add a Custom Food Item</h6>
         <q-form @submit.prevent="addFood">
           <div>
@@ -65,7 +68,12 @@ const addItem = async () => {
     timestamp: Date.now(),
   };
   console.log(food);
-  await addFood(food);
+  try{
+    await addFood(food);
+  } catch (e) {
+    router.push('/');
+    console.log(e);
+  }
   // Clear form fields
   name.value = '';
   portionSize.value = 0;
@@ -74,7 +82,6 @@ const addItem = async () => {
   carbs.value = 0;
   kcal.value = 0;
   meal.value = 'breakfast';
-  router.push('/');
 };
 
 </script>

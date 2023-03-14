@@ -1,6 +1,9 @@
 <template>
   <q-page-container>
     <q-page class="q-pa-md">
+      <q-page-sticky position="top-left" class="q-mt-lg q-ml-lg">
+        <q-btn to="/" round color="secondary"><img style="margin-left: -4px;" src="/images/chevron-left.svg" /></q-btn>
+      </q-page-sticky>
       <div class="text-h5 text-center text-bold q-mt-md">{{ food?.product_name }}</div>
       <div class="text-center q-mt-sm"><q-img width="70%" class="rounded-borders" :src="food?.image_url" /></div>
       <div class="text-h6 text-center text-bold q-mt-md">Nutrition Facts</div>
@@ -11,7 +14,8 @@
         <div class=""><span class="text-bold">Carbs: </span>{{ food?.nutriments?.carbohydrates }}g</div>
         <div class=""><span class="text-bold">Protein: </span>{{ food?.nutriments?.proteins }}g</div>
       </div>
-      <div class="text-center q-mt-lg"><q-btn class="" @click="showModal = true" rounded color="secondary">Add to Log</q-btn></div>
+      <div class="text-center q-mt-lg"><q-btn class="" @click="showModal = true" rounded color="secondary">Add to
+          Log</q-btn></div>
       <q-dialog v-model="showModal">
         <q-card class="q-pa-md">
           <q-card-section>
@@ -19,9 +23,8 @@
             <div class="info">
               <div class=""><span class="text-bold">Serving Size: </span>{{ food?.serving_size }}</div>
               <q-input label="Portion (grams)" type="number" v-model="portion"></q-input>
-              <q-select id="meal" label="Meal" :options="['breakfast', 'lunch', 'dinner', 'snack']"
-              v-model="meal">
-            </q-select>
+              <q-select id="meal" label="Meal" :options="['breakfast', 'lunch', 'dinner', 'snack']" v-model="meal">
+              </q-select>
             </div>
           </q-card-section>
           <q-card-actions align="right">
@@ -60,11 +63,16 @@ const addItem = async () => {
     timestamp: Date.now(),
   };
   console.log(item);
-  await addFood(item);
-  // Clear form fields
-  portion.value = 0;
-  meal.value = 'breakfast';
-  router.push('/');
+  try {
+    await addFood(item);
+    // Clear form fields
+    portion.value = 0;
+    meal.value = 'breakfast';
+  }
+  catch (err) {
+    router.push('/');
+    console.log(err);
+  }
 };
 
 let foodData;

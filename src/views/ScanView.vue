@@ -32,6 +32,9 @@ const onLoaded = () => {
 };
 </script>
 <template>
+	<q-page-sticky position="top-left" class="q-mt-lg q-ml-lg">
+		<q-btn to="/" round color="secondary"><img style="margin-left: -4px;" src="/images/chevron-left.svg" /></q-btn>
+	</q-page-sticky>
 	<q-btn class="btn" @click="runScanner = !runScanner">SCAN</q-btn>
 	<div>
 		<div class="box"></div>
@@ -55,10 +58,12 @@ const onLoaded = () => {
 	height: 50px;
 	/* Set button height */
 }
+
 .barcode-reader-wrapper {
 	display: flex;
 	justify-content: center;
 }
+
 .box {
 	height: 200px;
 }
