@@ -77,7 +77,7 @@
   </q-dialog>
 </template>
 <script setup>
-import { ref, toRaw, defineEmits } from 'vue';
+import { ref, toRaw } from 'vue';
 import { updateFood } from '@/indexedDB';
 import router from '../router';
 const props = defineProps({

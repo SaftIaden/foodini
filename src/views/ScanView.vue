@@ -23,9 +23,9 @@ const props = defineProps({
 const onDecode = async (result) => {
 	runScanner.value = false;
 	console.log(result);
+	window.navigator.vibrate(1000);
 
 	router.push(`add/${result}`);
-	/*window.navigator.vibrate(1000); */
 };
 const onLoaded = () => {
 	console.log('loaded');
